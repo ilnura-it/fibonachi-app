@@ -1,0 +1,18 @@
+language: generic 
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build itilya/fib-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true itilya/fib-test npm test
+
+after_success:
+  - docker build -t itilya/fibonachi-app ./client
+  - docker build -t itilya/fibonachi-nginx ./nginx
+  - docker build -t itilya/fibonachi-server ./server
+  - docker build -t itilya/fibonachi-worker ./worker
+
+
