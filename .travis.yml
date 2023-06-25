@@ -17,9 +17,9 @@ after_success:
   #Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # TAke images and push them to docker hub
-  - docker push itilya/fibonachi-app ./client
-  - docker push itilya/fibonachi-nginx ./nginx
-  - docker push itilya/fibonachi-server ./server
-  - docker push itilya/fibonachi-worker ./worker
+  - docker push itilya/fibonachi-app
+  - docker push itilya/fibonachi-nginx
+  - docker push itilya/fibonachi-server
+  - docker push itilya/fibonachi-worker
 
 
