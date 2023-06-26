@@ -1,0 +1,36 @@
+{
+   "AWSEMDockerrunVersion": "2",
+   "containerDefinitions": [
+      {
+         "name": "client",
+         "image": "itilya/fibonachi-app",
+         "hostname": "client",
+         "essential": false
+      },
+      {
+         "name": "server",
+         "image": "itilya/fibonachi-server",
+         "hostname": "api", 
+         "essential": false
+      },
+      {
+         "name": "worker",
+         "image": "itilya/fibonachi-worker",
+         "hostname": "worker",
+         "essential": false
+      },
+      {
+         "name": "nginx",
+         "image": "itilya/fibonachi-nginx",
+         "hostname": "nginx",
+         "essential": true,
+         "portMappings": [
+            {
+               "hostPort": "80",
+               "containerPort": "80"
+            }
+         ],
+         "links": ["client", "server"]
+      }
+   ]
+}
